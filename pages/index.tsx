@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { GetStaticProps } from 'next';
@@ -26,7 +27,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const Home: NextPage = (props) => {
+const Home: NextPage<{ tracks: Track[] }> = ({ tracks }) => {
   return (
     <div>
       <Head>
@@ -38,7 +39,7 @@ const Home: NextPage = (props) => {
       <main className="container mx-auto">
         <h1 className="text-3xl font-bold text-gray-900">Tameablemist Web</h1>
         <div>
-          <Tracks tracks={props.tracks} />
+          <Tracks tracks={tracks} />
         </div>
       </main>
     </div>
