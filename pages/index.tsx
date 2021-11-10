@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Tracks from '../components/Tracks';
 
 const Home: NextPage = () => {
   return (
@@ -12,6 +13,9 @@ const Home: NextPage = () => {
 
       <main className="container mx-auto">
         <h1 className="text-3xl font-bold text-gray-900">Tameablemist Web</h1>
+        <div>
+          <Tracks />
+        </div>
       </main>
     </div>
   );
