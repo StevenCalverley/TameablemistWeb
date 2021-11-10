@@ -10,8 +10,8 @@ const Tracks: FC<{ tracks: Track[] }> = ({ tracks }) => {
         Top Tracks
       </h3>
       <p className="mt-2 text-sm text-gray-600">
-        Curious what I'm currently listening to? Here's my top tracks on Spotify
-        updated daily.
+        Curious what I&apos;m currently listening to? Here&apos;s my top tracks
+        on Spotify updated daily.
       </p>
 
       <ul className="mt-1 space-y-3 divide-y max-w-3xl">
