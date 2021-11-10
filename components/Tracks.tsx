@@ -1,21 +1,4 @@
-import { useEffect, useState } from 'react';
-import type { Track } from '../types/spotify';
-
-const Tracks = () => {
-  const [tracks, setTracks] = useState<null | Track[]>(null);
-
-  useEffect(() => {
-    async function getTracks() {
-      const response = await fetch('/api/tracks');
-      return await response.json();
-    }
-    getTracks()
-      .then((data) => {
-        setTracks(data.tracks);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
+const Tracks = ({ tracks }) => {
   if (!tracks) return <div>Loading...</div>;
 
   return (
