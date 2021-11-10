@@ -9,6 +9,11 @@ const Tracks: FC<{ tracks: Track[] }> = ({ tracks }) => {
       <h3 className="font-bold text-3xl tracking-tight text-black">
         Top Tracks
       </h3>
+      <p className="mt-2 text-sm text-gray-600">
+        Curious what I'm currently listening to? Here's my top tracks on Spotify
+        updated daily.
+      </p>
+
       <ul className="mt-1 space-y-3 divide-y max-w-3xl">
         {tracks &&
           tracks.map((track, idx) => (
