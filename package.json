@@ -8,11 +8,13 @@
     "lint": "next lint"
   },
   "prettier": {
+    "arrowParens": "always",
     "semi": true,
     "singleQuote": true,
     "tabWidth": 2
   },
   "dependencies": {
+    "@prisma/client": "3.4.2",
     "isomorphic-unfetch": "^3.1.0",
     "next": "12.0.3",
     "querystring": "^0.2.1",
@@ -26,6 +28,7 @@
     "eslint": "7",
     "eslint-config-next": "12.0.3",
     "postcss": "^8.3.11",
+    "prisma": "3.4.2",
     "tailwindcss": "^2.2.19",
     "typescript": "4.4.4"
   }
