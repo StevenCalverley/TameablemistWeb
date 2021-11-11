@@ -62,3 +62,28 @@ export const PostMutation = extendType({
     });
   },
 });
+
+export const PostUpdateMutation = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.nonNull.field('updatePost', {
+      type: 'Post',
+      args: {
+        id: nonNull(intArg()),
+        title: stringArg(),
+        content: stringArg(),
+      },
+      resolve: async (_parent, args, ctx) => {
+        return await ctx.prisma.post.update({
+          where: {
+            id: args.id,
+          },
+          data: {
+            title: args.title,
+            content: args.content,
+          },
+        });
+      },
+    });
+  },
+});
