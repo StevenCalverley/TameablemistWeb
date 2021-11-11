@@ -11,7 +11,11 @@ export default async function assetHandler(
     case 'GET':
       try {
         const posts = await prisma.post.findMany();
-        res.status(200).json(posts);
+        const postResponse = posts.map((post) => ({
+          id: post.id,
+          title: post.title,
+        }));
+        res.status(200).json(postResponse);
       } catch (e) {
         console.error('Request error', e);
         res.status(500).json({ error: 'Error fetching posts' });
