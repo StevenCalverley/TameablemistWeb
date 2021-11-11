@@ -9,6 +9,7 @@ const cors = Cors();
 const apolloServer = new ApolloServer({
   schema,
   context: createContext,
+  introspection: true,
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
