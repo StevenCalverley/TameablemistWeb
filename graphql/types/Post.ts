@@ -1,4 +1,4 @@
-import { objectType, extendType } from 'nexus';
+import { objectType, extendType, nonNull, intArg, stringArg } from 'nexus';
 
 export const Post = objectType({
   name: 'Post',
@@ -18,6 +18,46 @@ export const PostsQuery = extendType({
       type: 'Post',
       resolve: async (_parent, _args, ctx) => {
         return await ctx.prisma.post.findMany();
+      },
+    });
+  },
+});
+
+export const PostsByIDQuery = extendType({
+  type: 'Query',
+  definition(t) {
+    t.field('postById', {
+      type: 'Post',
+      args: {
+        id: nonNull(intArg()),
+      },
+      resolve: async (_parent, args, ctx) => {
+        return await ctx.prisma.post.findUnique({
+          where: {
+            id: args.id,
+          },
+        });
+      },
+    });
+  },
+});
+
+export const PostMutation = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.nonNull.field('createPost', {
+      type: 'Post',
+      args: {
+        title: nonNull(stringArg()),
+        content: nonNull(stringArg()),
+      },
+      resolve: async (_parent, args, ctx) => {
+        return await ctx.prisma.post.create({
+          data: {
+            title: args.title,
+            content: args.content,
+          },
+        });
       },
     });
   },
