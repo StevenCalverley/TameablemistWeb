@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { ApolloServer } from 'apollo-server-micro';
+import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import { schema } from '../../graphql/schema';
 import { createContext } from '../../graphql/context';
 import Cors from 'micro-cors';
@@ -9,6 +9,7 @@ const cors = Cors();
 const apolloServer = new ApolloServer({
   schema,
   context: createContext,
+  plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
 const startServer = apolloServer.start();
